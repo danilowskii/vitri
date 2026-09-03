@@ -1,0 +1,23 @@
+{
+  "name": "vitri",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build:css": "tailwindcss -i ./src/style.css -o ./src/output.css",
+    "watch:css": "tailwindcss -i ./src/style.css -o ./src/output.css --watch",
+    "dev": "npm-run-all --parallel watch:css serve",
+    "serve": "browser-sync start --server src --files \"src/**/*.html, src/**/*.css\"",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "packageManager": "pnpm@10.32.0",
+  "devDependencies": {
+    "@tailwindcss/cli": "^4.3.3",
+    "browser-sync": "^3.0.4",
+    "npm-run-all": "^4.1.5",
+    "tailwindcss": "^4.3.3"
+  }
+}
