@@ -6,11 +6,47 @@
   }
 }
 
+/* =========================================
+   VITRI - DOT PATTERN
+   ========================================= */
+
+.hero {
+  position: relative;
+  overflow: hidden;
+}
+
+/* Fundo de pontos */
+.hero {
+  position: relative;
+  overflow: hidden;
+  min-height: 100dvh;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+
+  background-image: radial-gradient(#ece8e8f3 2px, transparent 2px);
+
+  background-size: 20px 20px;
+
+  pointer-events: none;
+  z-index: 0;
+}
+
+.hero > .wrap {
+  position: relative;
+  z-index: 1;
+}
+
 /* Reveal Animations */
 .reveal {
   opacity: 0;
   transform: translateY(30px);
-  transition: opacity 0.8s ease, transform 0.8s ease;
+  transition:
+    opacity 0.8s ease,
+    transform 0.8s ease;
   will-change: opacity, transform;
 }
 .reveal.is-visible {
@@ -20,7 +56,9 @@
 .reveal-left {
   opacity: 0;
   transform: translateX(-40px);
-  transition: opacity 0.8s ease, transform 0.8s ease;
+  transition:
+    opacity 0.8s ease,
+    transform 0.8s ease;
   will-change: opacity, transform;
 }
 .reveal-left.is-visible {
@@ -30,7 +68,9 @@
 .reveal-right {
   opacity: 0;
   transform: translateX(40px);
-  transition: opacity 0.8s ease, transform 0.8s ease;
+  transition:
+    opacity 0.8s ease,
+    transform 0.8s ease;
   will-change: opacity, transform;
 }
 .reveal-right.is-visible {
@@ -40,7 +80,9 @@
 .reveal-scale {
   opacity: 0;
   transform: scale(0.95);
-  transition: opacity 0.8s ease, transform 0.8s ease;
+  transition:
+    opacity 0.8s ease,
+    transform 0.8s ease;
   will-change: opacity, transform;
 }
 .reveal-scale.is-visible {
@@ -49,14 +91,25 @@
 }
 
 /* Sequential Delays for solutions/cards */
-.delay-1 { transition-delay: 0ms; }
-.delay-2 { transition-delay: 100ms; }
-.delay-3 { transition-delay: 200ms; }
-.delay-4 { transition-delay: 300ms; }
+.delay-1 {
+  transition-delay: 0ms;
+}
+.delay-2 {
+  transition-delay: 100ms;
+}
+.delay-3 {
+  transition-delay: 200ms;
+}
+.delay-4 {
+  transition-delay: 300ms;
+}
 
 /* Respeitar usuários que preferem menos animação */
 @media (prefers-reduced-motion: reduce) {
-  .reveal, .reveal-left, .reveal-right, .reveal-scale {
+  .reveal,
+  .reveal-left,
+  .reveal-right,
+  .reveal-scale {
     opacity: 1;
     transform: none;
     transition: none;

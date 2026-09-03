@@ -18,14 +18,13 @@ document.querySelectorAll(".tab").forEach((btn) => {
 document.getElementById("leadForm").addEventListener("submit", (e) => {
   e.preventDefault();
   document.getElementById("formMsg").style.display = "block";
-  e.target.querySelector("button").textContent =
-    "Diagnóstico solicitado ✓";
+  e.target.querySelector("button").textContent = "Diagnóstico solicitado ✓";
 });
 
 // Reveal Animations
 document.addEventListener("DOMContentLoaded", () => {
   const revealElements = document.querySelectorAll(
-    ".reveal, .reveal-left, .reveal-right, .reveal-scale"
+    ".reveal, .reveal-left, .reveal-right, .reveal-scale",
   );
 
   const observer = new IntersectionObserver(
@@ -40,7 +39,7 @@ document.addEventListener("DOMContentLoaded", () => {
     {
       threshold: 0.15,
       rootMargin: "0px 0px -50px 0px",
-    }
+    },
   );
 
   revealElements.forEach((element) => {
