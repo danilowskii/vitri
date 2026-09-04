@@ -1010,6 +1010,7 @@
     }
   }
 }
+@import url("https://fonts.googleapis.com/css2?family=Bitcount+Prop+Single:wght@100..900&family=Bitcount+Single:wght@100..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Oswald:wght@200..700&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&family=Special+Gothic+Expanded+One&family=Winky+Rough:ital,wght@0,300..900;1,300..900&display=swap");
 @layer components {
   .wrap {
     margin-inline: auto;
@@ -1017,7 +1018,15 @@
     padding-inline: calc(var(--spacing) * 6);
   }
 }
+body {
+  margin: 0;
+  font-family: Inter sans-serif;
+  background: var(--bg);
+  color: var(--ink);
+  line-height: 1.5;
+}
 .hero {
+  font-weight: 600;
   position: relative;
   overflow: hidden;
   min-height: 100dvh;
