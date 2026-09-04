@@ -30,31 +30,19 @@ body {
 .hero {
   position: relative;
 
-  overflow: hidden;
+  /* O ancestral do sticky não pode criar uma área de rolagem própria. */
+  overflow: visible;
   font-weight: bold;
 }
 
 /* Fundo de pontos */
 .hero {
   position: relative;
-  overflow: hidden;
-  min-height: 100dvh;
+  overflow: visible;
+  min-height: calc(100svh - 76px);
 }
 
-.hero::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-
-  background-image: radial-gradient(#ece8e8f3 2px, transparent 2px);
-
-  background-size: 20px 20px;
-
-  pointer-events: none;
-  z-index: 0;
-}
-
-.hero > .wrap {
+.hero-sticky {
   position: relative;
   z-index: 1;
 }

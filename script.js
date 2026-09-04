@@ -46,3 +46,49 @@ document.addEventListener("DOMContentLoaded", () => {
     observer.observe(element);
   });
 });
+
+/* =========================================================
+   HERO — VIDEO SCRUB ON SCROLL
+   ========================================================= */
+
+(() => {
+  const section = document.getElementById("hero-scroll");
+  const hero = section?.querySelector(".hero-sticky");
+  const video = document.getElementById("hero-video");
+  const { gsap, ScrollTrigger } = window;
+  if (!section || !hero || !video || !gsap || !ScrollTrigger) return;
+  gsap.registerPlugin(ScrollTrigger);
+  function initHeroVideo() {
+    if (!Number.isFinite(video.duration) || video.duration <= 0) return;
+    video.pause();
+    video.currentTime = 0;
+    const playhead = { progress: 0 };
+    const videoTween = gsap.to(playhead, {
+      progress: 1,
+      ease: "none",
+      paused: true,
+      onUpdate: () => {
+        if (!video.duration) return;
+        video.currentTime = playhead.progress * video.duration;
+      },
+    });
+    ScrollTrigger.create({
+      trigger: section,
+      pin: hero,
+      start: "top 76px",
+      end: "+=4000",
+      scrub: true,
+      animation: videoTween,
+      invalidateOnRefresh: true,
+      anticipatePin: 1,
+    });
+    video.pause();
+    video.currentTime = 0;
+    ScrollTrigger.refresh();
+  }
+  if (video.readyState >= 1) {
+    initHeroVideo();
+  } else {
+    video.addEventListener("loadedmetadata", initHeroVideo, { once: true });
+  }
+})();

@@ -51,132 +51,103 @@
     </nav>
 
     <main>
-      <section class="hero pt-[92px]">
-        <div
-          class="wrap grid grid-cols-1 md:grid-cols-2 items-center gap-[70px]"
-        >
-          <!-- COLUNA ESQUERDA -->
-          <div class="reveal-left">
-            <div
-              class="text-[12px] uppercase tracking-[0.16em] font-extrabold text-[#6a6a63]"
-            >
-              marketplace performance • criativos + copy + conversão
+      <section id="hero-scroll" class="hero relative">
+        <div class="hero-sticky h-[calc(100svh-76px)]">
+          <div
+            class="wrap h-full grid grid-cols-1 md:grid-cols-[0.9fr_1.1fr] items-center gap-[40px]"
+          >
+            <!-- COLUNA ESQUERDA -->
+            <div class="reveal-left">
+              <div
+                class="mb-[22px] inline-flex items-center rounded-full border border-[#dcdcd5] bg-white/60 px-[14px] py-[7px] text-[12px] font-medium tracking-[0.04em] text-[#555]"
+              >
+                MARKETPLACE PERFORMANCE • CRIATIVOS + COPY + CONVERSÃO
+              </div>
+
+              <h1
+                class="max-w-[620px] text-[clamp(42px,5vw,76px)] font-medium leading-[0.98] tracking-[-0.055em] text-[#171717]"
+              >
+                Seu produto não precisa de mais cliques.
+                <span class="text-[#777]"> Precisa merecer o clique. </span>
+              </h1>
+
+              <p
+                class="mt-[28px] max-w-[560px] text-[17px] leading-[1.65] text-[#5d5d5d]"
+              >
+                Transformamos anúncios comuns em vitrines que atraem atenção,
+                explicam o valor do produto, reduzem dúvidas de compra e
+                aumentam a percepção de valor sem depender de montagens
+                artificiais.
+              </p>
+
+              <div class="mt-[34px] flex flex-wrap items-center gap-[14px]">
+                <a
+                  href="#contato"
+                  class="inline-flex items-center justify-center rounded-full bg-[#171717] px-[24px] py-[14px] text-[14px] font-medium text-white transition-transform duration-200 hover:scale-[1.02]"
+                >
+                  Quero meu diagnóstico gratuito →
+                </a>
+
+                <a
+                  href="#antes-depois"
+                  class="inline-flex items-center justify-center rounded-full border border-[#d7d7d0] bg-white/50 px-[24px] py-[14px] text-[14px] font-medium text-[#333] transition-colors duration-200 hover:bg-white"
+                >
+                  Ver antes & depois
+                </a>
+              </div>
+
+              <div class="mt-[30px] flex flex-wrap gap-[8px]">
+                <span
+                  class="rounded-full border border-[#deded8] px-[12px] py-[6px] text-[11px] text-[#666]"
+                >
+                  Mercado Livre
+                </span>
+
+                <span
+                  class="rounded-full border border-[#deded8] px-[12px] py-[6px] text-[11px] text-[#666]"
+                >
+                  Shopee
+                </span>
+
+                <span
+                  class="rounded-full border border-[#deded8] px-[12px] py-[6px] text-[11px] text-[#666]"
+                >
+                  Amazon
+                </span>
+
+                <span
+                  class="rounded-full border border-[#deded8] px-[12px] py-[6px] text-[11px] text-[#666]"
+                >
+                  SEO de marketplace
+                </span>
+
+                <span
+                  class="rounded-full border border-[#deded8] px-[12px] py-[6px] text-[11px] text-[#666]"
+                >
+                  Copywriting
+                </span>
+              </div>
             </div>
 
-            <h1
-              class="text-[clamp(48px,7vw,82px)] leading-[0.92] tracking-[-0.065em] my-[16px] max-w-[760px]"
-            >
-              Seu produto não precisa de mais
-              <em
-                class="not-italic underline decoration-[5px] underline-offset-[9px]"
-                >cliques.</em
-              >
-              <br />Precisa merecer o clique.
-            </h1>
-
-            <p class="text-[19px] text-[#5e5e58] max-w-[640px]">
-              Transformamos anúncios comuns em vitrines que despertam atenção,
-              explicam o valor do produto e reduzem as dúvidas que travam a
-              compra — sem deixar o produto com cara de montagem artificial.
-            </p>
-
-            <div class="flex gap-[12px] flex-wrap mt-[30px]">
-              <button
-                class="border-0 rounded-[13px] px-[20px] py-[15px] font-extrabold cursor-pointer text-[15px] bg-[#171717] text-white"
-                onclick="openModal()"
-              >
-                Quero meu diagnóstico gratuito →
-              </button>
-
-              <a
-                class="border-0 rounded-[13px] px-[20px] py-[15px] font-extrabold cursor-pointer text-[15px] bg-white border border-[#e6e5df]"
-                href="#antes-depois"
-              >
-                Ver antes & depois
-              </a>
-            </div>
-
-            <div class="flex gap-[8px] flex-wrap mt-[25px]">
-              <span
-                class="px-[11px] py-[7px] bg-white border border-[#e6e5df] rounded-full text-[12px] font-bold"
-              >
-                Mercado Livre
-              </span>
-
-              <span
-                class="px-[11px] py-[7px] bg-white border border-[#e6e5df] rounded-full text-[12px] font-bold"
-              >
-                Shopee
-              </span>
-
-              <span
-                class="px-[11px] py-[7px] bg-white border border-[#e6e5df] rounded-full text-[12px] font-bold"
-              >
-                Amazon
-              </span>
-
-              <span
-                class="px-[11px] py-[7px] bg-white border border-[#e6e5df] rounded-full text-[12px] font-bold"
-              >
-                SEO de marketplace
-              </span>
-
-              <span
-                class="px-[11px] py-[7px] bg-white border border-[#e6e5df] rounded-full text-[12px] font-bold"
-              >
-                Copywriting
-              </span>
-            </div>
-          </div>
-
-          <!-- COLUNA DIREITA -->
-          <div class="reveal-right">
-            <div
-              class="bg-[#171717] rounded-[28px] p-[26px] text-white shadow-[0_24px_70px_rgba(0,0,0,0.14)] rotate-[1.5deg]"
-            >
-              <div class="text-[11px] text-[#aaa] uppercase tracking-[0.12em]">
-                raio-x de um anúncio
-              </div>
-
-              <div class="text-[64px] font-black tracking-[-0.06em] my-[6px]">
-                87%
-              </div>
-
-              <div class="text-[#bbb] text-[13px]">
-                potencial de melhoria identificado
-              </div>
-
+            <!-- COLUNA DIREITA -->
+            <div class="reveal-right flex w-full items-center justify-center">
               <div
-                class="flex justify-between my-[17px] mt-[17px] mb-[8px] text-[13px]"
+                class="relative w-full max-w-[760px] overflow-hidden rounded-[20px]"
               >
-                <span>Força do criativo</span>
-                <b class="text-white">92</b>
-              </div>
-
-              <div class="h-[9px] bg-[#343434] rounded-[9px] overflow-hidden">
-                <i class="block h-full bg-[#d9ff4f] w-[92%]"></i>
-              </div>
-
-              <div
-                class="flex justify-between my-[17px] mt-[17px] mb-[8px] text-[13px]"
-              >
-                <span>Clareza da oferta</span>
-                <b class="text-white">81</b>
-              </div>
-
-              <div class="h-[9px] bg-[#343434] rounded-[9px] overflow-hidden">
-                <i class="block h-full bg-[#d9ff4f] w-[81%]"></i>
-              </div>
-
-              <div
-                class="flex justify-between my-[17px] mt-[17px] mb-[8px] text-[13px]"
-              >
-                <span>Copy de conversão</span>
-                <b class="text-white">88</b>
-              </div>
-
-              <div class="h-[9px] bg-[#343434] rounded-[9px] overflow-hidden">
-                <i class="block h-full bg-[#d9ff4f] w-[88%]"></i>
+                <div class="aspect-[16/9] w-full">
+                  <video
+                    id="hero-video"
+                    class="block h-full w-full object-contain"
+                    muted
+                    playsinline
+                    preload="auto"
+                  >
+                    <source
+                      src="./src/assets/videos/video-scroll-keyframes.mp4"
+                      type="video/mp4"
+                    />
+                  </video>
+                </div>
               </div>
             </div>
           </div>
@@ -973,6 +944,8 @@
         </button>
       </div>
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
 
     <script src="script.js"></script>
   </body>
