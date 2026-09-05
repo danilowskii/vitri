@@ -65,20 +65,26 @@ document.addEventListener("DOMContentLoaded", () => {
 
   gsap.registerPlugin(ScrollTrigger);
 
+  let initialized = false;
+
   function initHeroVideo() {
-    if (!Number.isFinite(video.duration) || video.duration <= 0) return;
+    if (initialized) return;
+
+    if (!Number.isFinite(video.duration) || video.duration <= 0) {
+      return;
+    }
+
+    initialized = true;
 
     video.pause();
     video.currentTime = 0;
 
     const mm = gsap.matchMedia();
 
-    /*
-    ========================================
-    DESKTOP
-    mantém exatamente a lógica atual
-    ========================================
-    */
+    // ==========================================
+    // DESKTOP
+    // ==========================================
+
     mm.add("(min-width: 768px)", () => {
       const playhead = {
         progress: 0,
@@ -98,19 +104,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
       const trigger = ScrollTrigger.create({
         trigger: section,
-
         pin: hero,
-
         start: "top 76px",
-
         end: "+=4000",
-
         scrub: true,
-
         animation: videoTween,
-
         invalidateOnRefresh: true,
-
         anticipatePin: 1,
       });
 
@@ -123,14 +122,10 @@ document.addEventListener("DOMContentLoaded", () => {
       };
     });
 
-    /*
-    ========================================
-    MOBILE
-    vídeo chega no topo
-    fica preso
-    scroll começa a controlar o vídeo
-    ========================================
-    */
+    // ==========================================
+    // MOBILE
+    // ==========================================
+
     mm.add("(max-width: 767px)", () => {
       const playhead = {
         progress: 0,
@@ -138,9 +133,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       const videoTween = gsap.to(playhead, {
         progress: 1,
-
         ease: "none",
-
         paused: true,
 
         onUpdate: () => {
@@ -151,28 +144,12 @@ document.addEventListener("DOMContentLoaded", () => {
       });
 
       const trigger = ScrollTrigger.create({
-        /*
-        O próprio vídeo é quem ativa
-        o ScrollTrigger
-        */
         trigger: videoWrapper,
 
-        /*
-        No mobile somente o vídeo
-        fica preso
-        */
         pin: videoWrapper,
 
-        /*
-        Começa quando o topo do vídeo
-        encosta no topo da viewport
-        */
-        start: "top top",
+        start: "top 76px",
 
-        /*
-        Distância de scroll usada para
-        percorrer o vídeo
-        */
         end: "+=2500",
 
         scrub: true,
@@ -183,10 +160,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
         anticipatePin: 1,
 
-        /*
-        Mantém espaço no documento
-        enquanto o vídeo está pinned
-        */
         pinSpacing: true,
 
         onEnter: () => {
@@ -210,11 +183,17 @@ document.addEventListener("DOMContentLoaded", () => {
     ScrollTrigger.refresh();
   }
 
-  if (video.readyState >= 1) {
+  // Força o navegador a carregar o vídeo
+  video.load();
+
+  // Se metadata já estiver disponível
+  if (
+    video.readyState >= 1 &&
+    Number.isFinite(video.duration) &&
+    video.duration > 0
+  ) {
     initHeroVideo();
   } else {
-    video.addEventListener("loadedmetadata", initHeroVideo, {
-      once: true,
-    });
+    video.addEventListener("loadedmetadata", initHeroVideo, { once: true });
   }
 })();
