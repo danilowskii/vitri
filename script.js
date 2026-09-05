@@ -145,15 +145,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
       const trigger = ScrollTrigger.create({
         trigger: videoWrapper,
-        start: "top 76px",
+        start: "top 50%",
         // Long enough for a deliberate scrub without adding a fixed 2500px
         // spacer to short mobile viewports.
-        end: () => {
-          const scrollDistance = Math.round(
-            Math.min(1600, Math.max(1100, window.innerHeight * 1.8)),
-          );
-          return `+=${scrollDistance}`;
-        },
+        end: "+=800",
         scrub: true,
         animation: videoTween,
         invalidateOnRefresh: true,
