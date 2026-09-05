@@ -146,8 +146,6 @@ document.addEventListener("DOMContentLoaded", () => {
       const trigger = ScrollTrigger.create({
         trigger: videoWrapper,
 
-        pin: videoWrapper,
-
         start: "top 76px",
 
         end: "+=2500",
@@ -160,13 +158,23 @@ document.addEventListener("DOMContentLoaded", () => {
 
         anticipatePin: 1,
 
+        pin: videoWrapper,
+
         pinSpacing: true,
 
         onEnter: () => {
           video.pause();
         },
 
+        onLeave: () => {
+          video.pause();
+        },
+
         onEnterBack: () => {
+          video.pause();
+        },
+
+        onLeaveBack: () => {
           video.pause();
         },
       });

@@ -50,9 +50,7 @@
 
     <main>
       <section id="hero-scroll" class="hero relative">
-        <div
-          class="hero-sticky min-h-[calc(100svh-76px)] md:h-[calc(100svh-76px)]"
-        >
+        <div class="hero-sticky md:h-[calc(100svh-76px)]">
           <div
             class="wrap h-full max-w-[1600px] grid grid-cols-1 md:grid-cols-[0.9fr_1.1fr] items-center"
           >
@@ -136,9 +134,11 @@
             >
               <div
                 id="hero-video-wrapper"
-                class="relative w-full max-w-[900px] overflow-hidden rounded-[20px]"
+                class="relative w-full max-w-[900px] rounded-[20px]"
               >
-                <div class="aspect-[16/9] w-full">
+                <div
+                  class="aspect-[16/9] w-full overflow-hidden rounded-[20px]"
+                >
                   <video
                     id="hero-video"
                     class="block h-full w-full object-contain"
