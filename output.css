@@ -446,8 +446,11 @@
   .max-w-\[620px\] {
     max-width: 620px;
   }
-  .max-w-\[760px\] {
-    max-width: 760px;
+  .max-w-\[900px\] {
+    max-width: 900px;
+  }
+  .max-w-\[1600px\] {
+    max-width: 1600px;
   }
   .translate-x-\[-50\%\] {
     --tw-translate-x: -50%;
@@ -533,9 +536,6 @@
   .gap-\[35px\] {
     gap: 35px;
   }
-  .gap-\[40px\] {
-    gap: 40px;
-  }
   .overflow-hidden {
     overflow: hidden;
   }
@@ -583,9 +583,6 @@
   }
   .rounded-\[60px_60px_18px_18px\] {
     border-radius: 60px 60px 18px 18px;
-  }
-  .rounded-\[999px\] {
-    border-radius: 999px;
   }
   .rounded-full {
     border-radius: calc(infinity * 1px);
@@ -992,11 +989,6 @@
     transition-timing-function: var(--tw-ease, var(--default-transition-timing-function));
     transition-duration: var(--tw-duration, var(--default-transition-duration));
   }
-  .transition-transform {
-    transition-property: transform, translate, scale, rotate;
-    transition-timing-function: var(--tw-ease, var(--default-transition-timing-function));
-    transition-duration: var(--tw-duration, var(--default-transition-duration));
-  }
   .delay-1 {
     transition-delay: 1ms;
   }
@@ -1014,9 +1006,6 @@
     transition-duration: 200ms;
   }
   @media (hover: hover) {
-    .hover\:scale-\[1\.02\]:hover {
-      scale: 1.02;
-    }
     .hover\:bg-white:hover {
       background-color: var(--color-white);
     }
@@ -1082,6 +1071,39 @@ body {
 .hero-sticky {
   position: relative;
   z-index: 1;
+}
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  background-color: #171717;
+  padding: 14px 14px;
+  font-size: 14px;
+  font-weight: 500;
+  color: white;
+  gap: 2px;
+  transition: background-color 200ms ease;
+}
+.button:hover {
+  background-color: #272626;
+}
+.button-text {
+  transform: translateX(10px);
+  transition: transform 250ms ease;
+}
+.arrow-button {
+  width: 20px;
+  opacity: 0;
+  transform: translateX(-6px);
+  transition: opacity 200ms ease, transform 250ms ease;
+}
+.button:hover .button-text {
+  transform: translateX(-2px);
+}
+.button:hover .arrow-button {
+  opacity: 1;
+  transform: translateX(0);
 }
 .reveal {
   opacity: 0;

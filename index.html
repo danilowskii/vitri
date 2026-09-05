@@ -41,12 +41,10 @@
           ><a href="#antes-depois">Antes & Depois</a><a href="#videos">Vídeos</a
           ><a href="#nichos">Nichos</a><a href="#processo">Como funciona</a>
         </div>
-        <button
-          class="px-[11px] py-[16px] rounded-[999px] bg-[#171717] text-white font-bold"
-          onclick="openModal()"
-        >
-          Diagnóstico gratuito
-        </button>
+        <a href="#contato" class="button">
+          <span class="button-text">Diagnóstico gratuito</span>
+          <span class="arrow-button">→</span>
+        </a>
       </div>
     </nav>
 
@@ -54,7 +52,7 @@
       <section id="hero-scroll" class="hero relative">
         <div class="hero-sticky h-[calc(100svh-76px)]">
           <div
-            class="wrap h-full grid grid-cols-1 md:grid-cols-[0.9fr_1.1fr] items-center gap-[40px]"
+            class="wrap h-full max-w-[1600px] grid grid-cols-1 md:grid-cols-[0.9fr_1.1fr] items-center"
           >
             <!-- COLUNA ESQUERDA -->
             <div class="reveal-left">
@@ -81,11 +79,11 @@
               </p>
 
               <div class="mt-[34px] flex flex-wrap items-center gap-[14px]">
-                <a
-                  href="#contato"
-                  class="inline-flex items-center justify-center rounded-full bg-[#171717] px-[24px] py-[14px] text-[14px] font-medium text-white transition-transform duration-200 hover:scale-[1.02]"
-                >
-                  Quero meu diagnóstico gratuito →
+                <a href="#contato" class="button">
+                  <span class="button-text"
+                    >Quero meu diagnóstico gratuito</span
+                  >
+                  <span class="arrow-button">→</span>
                 </a>
 
                 <a
@@ -132,7 +130,7 @@
             <!-- COLUNA DIREITA -->
             <div class="reveal-right flex w-full items-center justify-center">
               <div
-                class="relative w-full max-w-[760px] overflow-hidden rounded-[20px]"
+                class="relative w-full max-w-[900px] overflow-hidden rounded-[20px]"
               >
                 <div class="aspect-[16/9] w-full">
                   <video
@@ -141,6 +139,7 @@
                     muted
                     playsinline
                     preload="auto"
+                    poster="./src/assets/images/video-driven-scroll.webp"
                   >
                     <source
                       src="./src/assets/videos/video-scroll-keyframes.mp4"
@@ -863,12 +862,10 @@
                 placeholder="O que mais te preocupa hoje?"
                 class="w-full p-[13px] border border-[#e6e5df] rounded-[10px] font-inherit min-h-[80px] resize-vertical"
               ></textarea>
-              <button
-                class="border-0 rounded-[13px] p-[15px_20px] font-extrabold cursor-pointer text-[15px] bg-[#171717] text-white"
-                type="submit"
-              >
-                Quero meu diagnóstico →
-              </button>
+              <a href="#contato" class="button">
+                <span class="button-text">Diagnóstico gratuito</span>
+                <span class="arrow-button">→</span>
+              </a>
               <small id="formMsg" class="hidden font-bold"
                 >Recebemos seus dados neste protótipo. Conecte o formulário ao
                 seu WhatsApp, e-mail ou CRM antes de publicar.</small

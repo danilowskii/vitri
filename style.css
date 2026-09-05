@@ -17,25 +17,17 @@
 body {
   margin: 0;
   font-family: "Segoe UI", sans-serif;
-
   background: var(--bg);
   color: var(--ink);
   line-height: 1.5;
 }
 
-/* =========================================
-   VITRI - DOT PATTERN
-   ========================================= */
-
 .hero {
   position: relative;
-
-  /* O ancestral do sticky não pode criar uma área de rolagem própria. */
   overflow: visible;
   font-weight: bold;
 }
 
-/* Fundo de pontos */
 .hero {
   position: relative;
   overflow: visible;
@@ -45,6 +37,47 @@ body {
 .hero-sticky {
   position: relative;
   z-index: 1;
+}
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  background-color: #171717;
+  padding: 14px 14px;
+  font-size: 14px;
+  font-weight: 500;
+  color: white;
+  gap: 2px;
+  transition: background-color 200ms ease;
+}
+
+.button:hover {
+  background-color: #272626;
+}
+
+.button-text {
+  transform: translateX(10px);
+  transition: transform 250ms ease;
+}
+
+.arrow-button {
+  width: 20px;
+  opacity: 0;
+  transform: translateX(-6px);
+  transition:
+    opacity 200ms ease,
+    transform 250ms ease;
+}
+
+.button:hover .button-text {
+  transform: translateX(-2px);
+}
+
+.button:hover .arrow-button {
+  opacity: 1;
+  transform: translateX(0);
 }
 
 /* Reveal Animations */
