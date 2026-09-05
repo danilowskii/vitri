@@ -145,21 +145,20 @@ document.addEventListener("DOMContentLoaded", () => {
 
       const trigger = ScrollTrigger.create({
         trigger: videoWrapper,
-
         start: "top 76px",
-
-        end: "+=2500",
-
+        // Long enough for a deliberate scrub without adding a fixed 2500px
+        // spacer to short mobile viewports.
+        end: () => {
+          const scrollDistance = Math.round(
+            Math.min(1600, Math.max(1100, window.innerHeight * 1.8)),
+          );
+          return `+=${scrollDistance}`;
+        },
         scrub: true,
-
         animation: videoTween,
-
         invalidateOnRefresh: true,
-
         anticipatePin: 1,
-
         pin: videoWrapper,
-
         pinSpacing: true,
 
         onEnter: () => {
@@ -187,6 +186,15 @@ document.addEventListener("DOMContentLoaded", () => {
         videoTween.kill();
       };
     });
+
+    // Text metrics can change when the web font finishes loading; refresh
+    // after that deterministic layout change so start/end use final geometry.
+    const refresh = () => ScrollTrigger.refresh();
+    if (document.fonts?.ready) {
+      document.fonts.ready.then(refresh);
+    } else {
+      window.addEventListener("load", refresh, { once: true });
+    }
 
     ScrollTrigger.refresh();
   }

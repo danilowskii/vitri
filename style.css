@@ -117,6 +117,20 @@ body {
   opacity: 1;
   transform: translateX(0);
 }
+
+/*
+ * ScrollTrigger pins the mobile video with position: fixed. A transformed
+ * ancestor would make that "fixed" position relative to the column instead
+ * of to the viewport, so the reveal transform cannot apply in this context.
+ */
+@media (max-width: 767px) {
+  #hero-video-column {
+    opacity: 1;
+    transform: none;
+    transition: none;
+    will-change: auto;
+  }
+}
 .reveal-scale {
   opacity: 0;
   transform: scale(0.95);
