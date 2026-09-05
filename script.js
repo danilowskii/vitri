@@ -55,40 +55,166 @@ document.addEventListener("DOMContentLoaded", () => {
   const section = document.getElementById("hero-scroll");
   const hero = section?.querySelector(".hero-sticky");
   const video = document.getElementById("hero-video");
+  const videoWrapper = document.getElementById("hero-video-wrapper");
+
   const { gsap, ScrollTrigger } = window;
-  if (!section || !hero || !video || !gsap || !ScrollTrigger) return;
+
+  if (!section || !hero || !video || !videoWrapper || !gsap || !ScrollTrigger) {
+    return;
+  }
+
   gsap.registerPlugin(ScrollTrigger);
+
   function initHeroVideo() {
     if (!Number.isFinite(video.duration) || video.duration <= 0) return;
+
     video.pause();
     video.currentTime = 0;
-    const playhead = { progress: 0 };
-    const videoTween = gsap.to(playhead, {
-      progress: 1,
-      ease: "none",
-      paused: true,
-      onUpdate: () => {
-        if (!video.duration) return;
-        video.currentTime = playhead.progress * video.duration;
-      },
+
+    const mm = gsap.matchMedia();
+
+    /*
+    ========================================
+    DESKTOP
+    mantém exatamente a lógica atual
+    ========================================
+    */
+    mm.add("(min-width: 768px)", () => {
+      const playhead = {
+        progress: 0,
+      };
+
+      const videoTween = gsap.to(playhead, {
+        progress: 1,
+        ease: "none",
+        paused: true,
+
+        onUpdate: () => {
+          if (!video.duration) return;
+
+          video.currentTime = playhead.progress * video.duration;
+        },
+      });
+
+      const trigger = ScrollTrigger.create({
+        trigger: section,
+
+        pin: hero,
+
+        start: "top 76px",
+
+        end: "+=4000",
+
+        scrub: true,
+
+        animation: videoTween,
+
+        invalidateOnRefresh: true,
+
+        anticipatePin: 1,
+      });
+
+      video.pause();
+      video.currentTime = 0;
+
+      return () => {
+        trigger.kill();
+        videoTween.kill();
+      };
     });
-    ScrollTrigger.create({
-      trigger: section,
-      pin: hero,
-      start: "top 76px",
-      end: "+=4000",
-      scrub: true,
-      animation: videoTween,
-      invalidateOnRefresh: true,
-      anticipatePin: 1,
+
+    /*
+    ========================================
+    MOBILE
+    vídeo chega no topo
+    fica preso
+    scroll começa a controlar o vídeo
+    ========================================
+    */
+    mm.add("(max-width: 767px)", () => {
+      const playhead = {
+        progress: 0,
+      };
+
+      const videoTween = gsap.to(playhead, {
+        progress: 1,
+
+        ease: "none",
+
+        paused: true,
+
+        onUpdate: () => {
+          if (!video.duration) return;
+
+          video.currentTime = playhead.progress * video.duration;
+        },
+      });
+
+      const trigger = ScrollTrigger.create({
+        /*
+        O próprio vídeo é quem ativa
+        o ScrollTrigger
+        */
+        trigger: videoWrapper,
+
+        /*
+        No mobile somente o vídeo
+        fica preso
+        */
+        pin: videoWrapper,
+
+        /*
+        Começa quando o topo do vídeo
+        encosta no topo da viewport
+        */
+        start: "top top",
+
+        /*
+        Distância de scroll usada para
+        percorrer o vídeo
+        */
+        end: "+=2500",
+
+        scrub: true,
+
+        animation: videoTween,
+
+        invalidateOnRefresh: true,
+
+        anticipatePin: 1,
+
+        /*
+        Mantém espaço no documento
+        enquanto o vídeo está pinned
+        */
+        pinSpacing: true,
+
+        onEnter: () => {
+          video.pause();
+        },
+
+        onEnterBack: () => {
+          video.pause();
+        },
+      });
+
+      video.pause();
+      video.currentTime = 0;
+
+      return () => {
+        trigger.kill();
+        videoTween.kill();
+      };
     });
-    video.pause();
-    video.currentTime = 0;
+
     ScrollTrigger.refresh();
   }
+
   if (video.readyState >= 1) {
     initHeroVideo();
   } else {
-    video.addEventListener("loadedmetadata", initHeroVideo, { once: true });
+    video.addEventListener("loadedmetadata", initHeroVideo, {
+      once: true,
+    });
   }
 })();

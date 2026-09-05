@@ -36,7 +36,7 @@
           >
           marketplace
         </a>
-        <div class="flex gap-[24px] text-[14px] text-[#555]">
+        <div class="flex gap-[24px] hidden md:block text-[14px] text-[#555]">
           <a href="#solucoes">Soluções</a
           ><a href="#antes-depois">Antes & Depois</a><a href="#videos">Vídeos</a
           ><a href="#nichos">Nichos</a><a href="#processo">Como funciona</a>
@@ -50,7 +50,9 @@
 
     <main>
       <section id="hero-scroll" class="hero relative">
-        <div class="hero-sticky h-[calc(100svh-76px)]">
+        <div
+          class="hero-sticky min-h-[calc(100svh-76px)] md:h-[calc(100svh-76px)]"
+        >
           <div
             class="wrap h-full max-w-[1600px] grid grid-cols-1 md:grid-cols-[0.9fr_1.1fr] items-center"
           >
@@ -128,8 +130,12 @@
             </div>
 
             <!-- COLUNA DIREITA -->
-            <div class="reveal-right flex w-full items-center justify-center">
+            <div
+              id="hero-video-column"
+              class="reveal-right flex w-full items-center justify-center mt-[40px] md:mt-0"
+            >
               <div
+                id="hero-video-wrapper"
                 class="relative w-full max-w-[900px] overflow-hidden rounded-[20px]"
               >
                 <div class="aspect-[16/9] w-full">
